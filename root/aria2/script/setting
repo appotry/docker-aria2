@@ -35,9 +35,7 @@ SED_CONF() {
     sed -i "s@^\(remove-repeat-task=\).*@\1${RRT}@" /config/setting.conf.new
     sed -i "s@^\(move-paused-task=\).*@\1${MPT}@" /config/setting.conf.new
     # 如某项参数不存在，则使用默认参数，防止程序运行出错
-    if [[ -z "${CTU}" ]]; then
-        # 无所谓
-    elif [[ -z "${RMTASK}" ]]; then
+    if [[ -z "${RMTASK}" ]]; then
         sed -i "s@^\(remove-task=\).*@\1rmaria@" /config/setting.conf.new
     elif [[ -z "${MOVE}" ]]; then
         sed -i "s@^\(move-task=\).*@\1false@" /config/setting.conf.new

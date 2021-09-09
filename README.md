@@ -446,8 +446,7 @@ docker run -d \
   ```
 docker-compose  
   ```yml
-version: "3"
-
+version: "3.1"
 services:
   aria2:
     image: superng6/aria2:webui-latest
