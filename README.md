@@ -14,17 +14,16 @@ __当前的镜像或多或少都有以下几点不符合的我的需求__
    
 - 没有配置UID和GID
   > 这关系到你下载的文件的权限问题，默认是root权限，很难管理
-- 掺杂了不必要的东西
-   > 大量aria2 images都包含了webui，我觉得根本没有必要
-   > 随便找一个在线的aria2控制台即可
-   > 一个容器最好只跑一个服务
  - 端口不全
    > 绝大多数的aria2 images 都只开放了6800端口
    > 下载速度息息相关的BT下载DTH监听端口、BT下载监听端口，需要expose出来
+   > 支持修改`DHT网络监听端口`和`BT监听端口`，部分网络6881端口已被封禁，建议修改
  - 没有自动删除.aria2文件的自动执行脚本
    > aria2建立下载任务后会自动生成.aria2文件，aria2自身提供了api可以触发执行脚本
  - 没有回收站
    > 不小心删除文件后无法找回，现在有了回收站，再也不用担心误删了
+ - 没有任务转移功能
+   > NAS下载，建议使用SSD盘，减少硬盘噪音，下载完成后自动保留目录结构转移到HDD硬盘中
 # 本镜像的一些优点
 - 全平台架构`x86-64`、`arm64`、`armhf`,统一latest tag
 - 做了usermapping，使用你自己的账户权限来运行，这点对于群辉来说尤其重要
@@ -73,6 +72,11 @@ docker pull superng6/aria2:webui-latest
 
 
 ## 往后所有新增功能设置选项均在`/config/setting.conf`
+### 额外补充文章  
+群晖 DS918+扩展 – M.2 NVMe SSD 缓存变储存空间
+https://sleele.com/2021/09/04/synology-nas-m2nvme-ssd-cache-change-to-storage-pool/  
+NAS SSD临时下载盘，Aria2+qbittorrent配置教程  
+https://sleele.com/2021/09/04/nas-ssd-aria2-qbittorrent/
 
 # Changelogs
 ## 2021/09/09
@@ -325,6 +329,7 @@ https://hub.docker.com/r/superng6/ariang
 | `-e SECRET=yourtoken` |Aria2 token|
 | `-e CACHE=1024M` |Aria2磁盘缓存配置|
 | `-e PORT=6800` | RPC通讯端口 |
+| `-e WEBUI_PORT=8080` | WEBUI端口 |
 | `-e DLPORT=32516` | DHT和BT监听端口 |
 | `-e UT=true` |启动容器时更新trackers|
 | `-e RUT=true` |每天凌晨3点更新trackers|
