@@ -73,7 +73,7 @@ docker pull superng6/aria2:webui-latest
 
 ## 往后所有新增功能设置选项均在`/config/setting.conf`
 ### 额外补充文章  
-群晖 DS918+扩展 – M.2 NVMe SSD 缓存变储存空间
+群晖 DS918+扩展 – M.2 NVMe SSD 缓存变储存空间  
 https://sleele.com/2021/09/04/synology-nas-m2nvme-ssd-cache-change-to-storage-pool/  
 NAS SSD临时下载盘，Aria2+qbittorrent配置教程  
 https://sleele.com/2021/09/04/nas-ssd-aria2-qbittorrent/
